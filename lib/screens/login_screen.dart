@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:multi_profile/screens/home_screen.dart';
 import 'package:multi_profile/widgets/my_button.dart';
 import 'package:multi_profile/widgets/my_text_field.dart';
@@ -12,6 +13,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final String? email = dotenv.env['EMAIL'];
+  final String? password = dotenv.env['PASSWORD'];
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   @override
@@ -32,8 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
             onTap: () async {
               final SharedPreferences pref =
                   await SharedPreferences.getInstance();
-              pref.setString('email', 'xyz@gmail.com');
-              pref.setString('password', '12345678');
+              pref.setString('email', email!);
+              pref.setString('password', password!);
 
               print(pref.getString('email'));
               print(pref.getString('password'));
