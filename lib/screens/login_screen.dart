@@ -38,8 +38,20 @@ class _LoginScreenState extends State<LoginScreen> {
               pref.setString('email', email!);
               pref.setString('password', password!);
 
-              print(pref.getString('email'));
-              print(pref.getString('password'));
+              if (emailController.text.trim() == email &&
+                  passwordController.text == password) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Entered credentials are incorrect"),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
             },
           ),
         ],
