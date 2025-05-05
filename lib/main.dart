@@ -10,10 +10,9 @@ class MultiProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Multi Profile',
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Colors.blue),
+      title: 'Multi Profile',
       home: SplashScreen(),
     );
   }

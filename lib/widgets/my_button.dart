@@ -8,7 +8,7 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 35, vertical: 10),
       child: InkWell(
         onTap: onTap,
         child: Container(
