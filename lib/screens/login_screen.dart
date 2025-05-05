@@ -28,16 +28,20 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MyTextField(hintText: 'Email', controller: emailController),
-          MyTextField(hintText: 'Password ', controller: passwordController),
+          MyTextField(
+            hintText: 'Email',
+            controller: emailController,
+            keyboardType: TextInputType.emailAddress,
+          ),
+          MyTextField(
+            hintText: 'Password ',
+            controller: passwordController,
+            keyboardType: TextInputType.text,
+          ),
           MyButton(
             title: 'Login',
-            onTap: () async {
-              final SharedPreferences pref =
-                  await SharedPreferences.getInstance();
-              pref.setString('email', email!);
-              pref.setString('password', password!);
-
+            onTap: () {
+              _login();
               if (emailController.text.trim() == email &&
                   passwordController.text == password) {
                 Navigator.push(
@@ -57,5 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _login() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString('email', email!);
+    pref.setString('password', password!);
   }
 }
