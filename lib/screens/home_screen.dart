@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multi_profile/screens/login_screen.dart';
 import 'package:multi_profile/widgets/my_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,7 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           MyButton(
             title: 'Logout',
-            onTap: () {
+            onTap: () async {
+              SharedPreferences pref = await SharedPreferences.getInstance();
+              pref.clear();
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => LoginScreen()),
