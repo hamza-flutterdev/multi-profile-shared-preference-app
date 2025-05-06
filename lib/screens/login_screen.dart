@@ -67,5 +67,6 @@ class _LoginScreenState extends State<LoginScreen> {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('email', email!);
     pref.setString('password', password!);
+    pref.setBool('isLogin', true);
   }
 }
